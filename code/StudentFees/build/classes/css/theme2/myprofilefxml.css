@@ -1,0 +1,33 @@
+*{
+    bg : #33333D;
+    text :#e0dcdc;
+}
+.root{
+    -fx-background-color: bg;
+}
+
+.label{
+    -fx-font-size:15px;
+    -fx-text-fill:text;
+}
+.text-field{
+    -jfx-unfocus-color:derive(bg , 50%);
+    -fx-text-fill:text;
+    -fx-font-size:15px;
+    -jfx-focus-color:derive(text , 95%);
+}
+.button{
+    -fx-border-color:text;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-text-fill:text;
+}
+.button:hover{
+    -fx-border-color: text;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-background-color:text;
+    -fx-text-fill:bg;
+}

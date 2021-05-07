@@ -1,0 +1,53 @@
+/*
+ * Empty Stylesheet file.
+ */
+*{
+    bg : #33333D;
+    text :#F0F0F0;
+    
+    pink :#FA417F;
+    yellow:fcfcb5;
+}
+
+.mainFxmlClass {
+
+}
+#header{
+    -fx-background-color: bg;
+}
+#name{
+    -fx-text-fill: text;
+    -fx-font-size:22px;
+}
+.table-view .column-header{
+    -fx-background-color: derive(bg , 40%);
+    -fx-text-fill: white;
+}
+
+
+.table-view .column-header .label{
+    -fx-text-fill: text;
+}
+
+
+.table-column{
+    -fx-text-fill: bg;
+    -fx-alignment: center;
+    -fx-font-size:14px;
+}
+.list-view {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+.list-view  .cell.indexed-cell.list-cell{
+    -fx-background-color: bg;
+    -fx-text-fill: text;
+    -fx-font-size: 15px;
+    -fx-border-color: bg; 
+}
+
+#pp-container{
+    -fx-background-radius: 50%;
+    -fx-border-radius: 10px;
+    -fx-background-color: red;
+}

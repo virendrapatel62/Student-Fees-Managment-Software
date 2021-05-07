@@ -1,0 +1,52 @@
+*{
+    bg: #1a89a8;
+    text:white;
+}
+
+.mainFxmlClass {
+    
+}
+
+.glyph-icon{
+    -fx-fill: bg;
+}
+
+.root{
+    -fx-background-color:bg;
+    -fx-background-image:url("../../images/login.jpg");
+    -fx-background-position: center;
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  
+  
+}
+#layer{
+    
+    -fx-background-color:rgba(255,255,255,0.6);
+    
+}
+.label{
+    -fx-font-size:18px;
+    -fx-text-fill:bg;
+}
+.text-field{
+    -jfx-unfocus-color:derive(bg , 50%);
+    -fx-text-fill:bg;
+    -fx-font-size:15px;
+    -jfx-focus-color:derive(bg, 95%);
+}
+.button{
+    -fx-border-color:bg;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-text-fill:bg;
+}
+.button:hover{
+    -fx-border-color: bg;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-font-size:15px;
+    -fx-background-color:bg;
+    -fx-text-fill:text;
+}

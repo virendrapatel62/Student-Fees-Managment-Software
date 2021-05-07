@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="738.0" prefWidth="537.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ReceiptController">
+   <children>
+      <VBox fx:id="reciptBox" alignment="TOP_CENTER" layoutX="235.0" layoutY="15.0" prefHeight="723.0" prefWidth="537.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+         <children>
+            <Label fx:id="heading" styleClass="heading" text="Receipt">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label id="institute-name" fx:id="instituteName" styleClass="heading" text="Institute NameInstitute NameInstitute Name">
+               <font>
+                  <Font name="System Bold" size="23.0" />
+               </font>
+            </Label>
+            <Label fx:id="address" styleClass="heading" text="Address">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <VBox prefWidth="537.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label minWidth="150.0" text="Student Id" />
+                        <Label fx:id="studentId" text="Mohan kumar" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label minWidth="150.0" text="Student Name" />
+                        <Label fx:id="studentName" text="LabMohan Kumarel" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label minWidth="150.0" text="Father's Name" />
+                        <Label fx:id="fathersName" text="Sohan kumar" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label minWidth="150.0" text="Course" />
+                        <Label fx:id="batch" text="Hibernate" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT">
+                     <children>
+                        <Label minWidth="150.0" text="Receipt Issue Date" />
+                        <Label fx:id="dateToday" text="Today Date" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="20.0" right="20.0" top="2.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+            <TableView fx:id="table" prefHeight="353.0" prefWidth="517.0">
+              <columns>
+                <TableColumn fx:id="snoColumn" prefWidth="100.0" text="Sno." />
+                <TableColumn fx:id="paricularsColumn" onEditCommit="#changeParticular" prefWidth="154.0" text="Particulars" />
+                  <TableColumn fx:id="dateOfSubmission" prefWidth="154.0" text="Submission Date" />
+                  <TableColumn fx:id="amountColumn" prefWidth="262.0" text="Amount" />
+              </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </TableView>
+            <HBox alignment="BASELINE_LEFT">
+               <children>
+                  <HBox prefHeight="81.0" prefWidth="248.0">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label text="Payment Done By- ">
+                                 <VBox.margin>
+                                    <Insets left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="BASELINE_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXCheckBox minWidth="70.0" prefHeight="18.0" prefWidth="70.0" text="Cash">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox minWidth="70.0" prefWidth="70.0" text="Check">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="BASELINE_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <JFXCheckBox minWidth="70.0" prefHeight="18.0" prefWidth="70.0" text="DD">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox minWidth="70.0" prefWidth="70.0" text="Online">
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font size="11.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" style="-fx-border-color: black; -fx-border-radius: 10px;">
+                     <children>
+                        <Label id="symbol" fx:id="totalLabel" minWidth="54.0" prefHeight="36.0" prefWidth="54.0" text="Rs">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label id="amount" fx:id="total" text="20501656462484545">
+                           <font>
+                              <Font size="19.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="30.0" top="5.0" />
+               </padding>
+            </HBox>
+            <AnchorPane prefHeight="27.0" prefWidth="537.0">
+               <children>
+                  <Label layoutX="8.0" layoutY="32.0" text="Signature of Student" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="386.0" layoutY="32.0" text="Signature of Head" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <Separator prefWidth="200.0" />
+            <JFXTextArea text="1 . Cheque are subject to realization.&#10;2 . Amount once paid is not refundable or adjustable.&#10;3 . Instalment should be paid within first 10 days of each month .">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </JFXTextArea>
+         </children>
+         <padding>
+            <Insets top="20.0" />
+         </padding>
+      </VBox>
+      <MenuBar minHeight="25.0" prefHeight="36.0" prefWidth="537.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false">
+               <graphic>
+                  <JFXButton fx:id="print" onAction="#print" text="Print">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PRINT" size="20" />
+                     </graphic></JFXButton>
+               </graphic>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </children>
+</AnchorPane>

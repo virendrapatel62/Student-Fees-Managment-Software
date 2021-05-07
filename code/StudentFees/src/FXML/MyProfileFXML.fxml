@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="636.0" prefWidth="464.0" styleClass="root" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MyProfileFXMLController">
+   <children>
+      <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="571.0" prefWidth="464.0" style="-fx-background-color: transparent;" styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <VBox alignment="TOP_CENTER" prefHeight="571.0" prefWidth="464.0" styleClass="root">
+               <children>
+                  <ImageView fx:id="logo" fitHeight="119.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/avtar.png" />
+                     </image>
+                     <VBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="EDIT" onMouseClicked="#uploadLogo" size="20">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                        <FontAwesomeIconView fill="WHITE" glyphName="REMOVE" onMouseClicked="#removeLogo" size="20">
+                           <HBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </HBox.margin>
+                        </FontAwesomeIconView>
+                     </children>
+                  </HBox>
+                  <Label text="Institute Logo" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Separator maxWidth="600.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                  </Separator>
+                  <VBox maxWidth="400.0" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Name">
+                           <VBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="name" maxWidth="350.0" minWidth="250.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <Label text="Institute Name">
+                           <VBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="instituteName" maxWidth="350.0" minWidth="250.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <Label text="Address">
+                           <VBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="address" maxWidth="350.0" minWidth="250.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <Label text="Email">
+                           <VBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="email" maxWidth="350.0" minWidth="250.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <Label text="Mobile Number">
+                           <VBox.margin>
+                              <Insets left="20.0" top="10.0" />
+                           </VBox.margin>
+                        </Label>
+                        <JFXTextField fx:id="mobile" maxWidth="350.0" minWidth="250.0" prefWidth="200.0">
+                           <VBox.margin>
+                              <Insets bottom="15.0" left="15.0" right="5.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                     </children>
+                  </VBox>
+                  <JFXButton minWidth="150.0" onAction="#save" text="Save">
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <padding>
+                  <Insets bottom="50.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

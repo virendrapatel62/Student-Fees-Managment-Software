@@ -1,0 +1,29 @@
+*{
+    bg: #054964;
+    text:#FEFFF8;
+}
+
+
+.mainFxmlClass {
+    -fx-background-image: url("../../images/bg2.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+}
+
+#heading{
+    -fx-background-color: rgba(0,0,0,0.3);
+     -fx-background-radius: 20px;
+     -fx-border-color: white;
+     -fx-border-radius:20px;
+}
+
+
+#about{
+    -fx-text-fill: black;
+    -fx-font-size:20px;
+    -fx-background-color: rgba(255,255,255,0.3);
+     -fx-background-radius: 20px;
+     -fx-border-color: white;
+     -fx-border-radius:20px;
+}
+

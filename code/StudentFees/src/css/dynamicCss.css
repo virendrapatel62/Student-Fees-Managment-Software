@@ -1,0 +1,8 @@
+.editingColumn{
+    -fx-text-fill:#ff6361;
+}
+
+
+.table-view .text-field {
+    -fx-text-fill: bg;
+}

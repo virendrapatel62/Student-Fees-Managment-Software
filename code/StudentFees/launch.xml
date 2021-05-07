@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <obj>w32api/crt2.o</obj>
+  <obj>head/guihead.o</obj>
+  <obj>head/head.o</obj>
+  <lib>w32api/libmingw32.a</lib>
+  <lib>w32api/libgcc.a</lib>
+  <lib>w32api/libmsvcrt.a</lib>
+  <lib>w32api/libkernel32.a</lib>
+  <lib>w32api/libuser32.a</lib>
+  <lib>w32api/libadvapi32.a</lib>
+  <lib>w32api/libshell32.a</lib>
+  <jar>C:\Users\dell\Documents\NetBeansProjects\StudentFees\dist\StudentFees.jar</jar>
+  <outfile>C:\Users\dell\Documents\NetBeansProjects\StudentFees\dist\student fee Managment.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>true</restartOnCrash>
+  <manifest></manifest>
+  <icon>C:\Users\dell\Downloads\training-3185170_640.ico</icon>
+  <singleInstance>
+    <mutexName>StudentFee</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+</launch4jConfig>

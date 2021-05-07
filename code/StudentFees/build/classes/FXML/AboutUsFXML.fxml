@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="524.0" prefWidth="517.0" styleClass="root" stylesheets="@../css/aboutusfxml.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1">
+   <children>
+      <JFXTextArea editable="false" labelFloat="true" layoutX="26.0" layoutY="83.0" prefHeight="184.0" prefWidth="464.0" text="The main objective of our software company NVMicro Software  Solutions is to develop some small software to  benefit small business owners who can not  purchase a large and expensive software.  Our company will provide a solution to every  small problem which is due to a small institution not being able to purchase expensive software,  because the trader of every class will use the software,  then our India will become digital.&#10;" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="83.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXTextArea>
+      <Label layoutX="50.0" layoutY="26.0" text="About Us" textFill="#7846e4" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <JFXTextArea editable="false" layoutX="26.0" layoutY="276.0" prefHeight="97.0" prefWidth="450.0" text="Our Team , &#10;Nitendra Tomar (Managing Director) &#10;Virendra Patel (Software Developer)" wrapText="true" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="276.0">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXTextArea>
+      <VBox layoutX="36.0" layoutY="392.0" prefHeight="46.0" prefWidth="464.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="392.0">
+         <children>
+            <Label text="NVMicro Software Solutions">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label text="For Any Business Enquiry - nvmicrosoftware@gmail.com">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Separator layoutX="118.0" layoutY="471.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+   </children>
+</AnchorPane>

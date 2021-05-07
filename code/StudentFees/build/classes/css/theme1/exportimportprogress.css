@@ -1,0 +1,46 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+*{
+    bg: #383127;
+    text:#FEFFF8;
+}
+.root{
+    -fx-background-color: bg;
+    -fx-border-color: text;
+}
+
+#heading{
+   -fx-text-fill: text;
+   -fx-font-size:18px;
+}
+#info{
+    
+    -fx-text-fill: text;
+    -fx-font-size:20px;
+}
+.glyph-icon{
+    -fx-fill: text;
+    -fx-font-size:15px;
+}
+
+.glyph-icon:hover{
+    -fx-fill: red;
+    -fx-font-size:15px;
+}
+.progress-indicator .percentage{
+    -fx-fill:white;
+    -fx-font-size:20px;
+}
+
+
+
+
+
+
+
+
+
+
+

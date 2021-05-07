@@ -1,0 +1,1385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.CheckMenuItem?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="main" minHeight="-Infinity" minWidth="-Infinity" prefHeight="608.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainFrameController">
+   <children>
+      <MenuBar fx:id="menuBar" layoutX="14.0" layoutY="2.0" minHeight="30.0" minWidth="750.0" prefHeight="32.0" prefWidth="750.0" AnchorPane.bottomAnchor="576.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Add">
+            <items>
+              <MenuItem onAction="#showAddStudentTab" text="Student">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#showAddBatchTab" text="Batch">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="B" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
+                     </accelerator>
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USERS" />
+                     </graphic></MenuItem>
+            </items>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="USER_PLUS" size="20" textAlignment="CENTER" />
+               </graphic>
+          </Menu>
+          <Menu fx:id="settingMenu" mnemonicParsing="false" text="Setting">
+            <items>
+              <MenuItem fx:id="setPasswordMenuItem" mnemonicParsing="false" onAction="#setPassword" text="Set Password">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="LOCK" />
+                     </graphic></MenuItem>
+                  <MenuItem fx:id="removePasswordMenuItem" mnemonicParsing="false" onAction="#removePassword" text="Remove Password">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="UNLOCK_ALT" />
+                     </graphic></MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#openMyProfile" text="My Profile">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="USER_CIRCLE" />
+                     </graphic>
+                  </MenuItem>
+                  <Menu fx:id="themesMenu" mnemonicParsing="false" text="Themes">
+                    <items>
+                        <CheckMenuItem fx:id="blackTheme" mnemonicParsing="false" onAction="#changeTheme" selected="true" text="Black" />
+                        <CheckMenuItem fx:id="chocolateTheme" mnemonicParsing="false" onAction="#changeTheme" text="Chocolate" />
+                        <CheckMenuItem fx:id="blueTheme" mnemonicParsing="false" onAction="#changeTheme" text="Blue" />
+                        <CheckMenuItem fx:id="theme4" mnemonicParsing="false" onAction="#changeTheme" text="Purple" />
+                        <CheckMenuItem fx:id="OfficeTheme" mnemonicParsing="false" onAction="#changeTheme" text="Office" />
+                    </items>
+                  </Menu>
+            </items>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="COGS" size="20" textAlignment="CENTER" />
+               </graphic>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Database">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#sendDatabaseToGmail" text="Send To Gmail">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEND" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#export" text="Export">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="UPLOAD" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#backupDatabase" text="Backup">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEND" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#restoreDatabase" text="Restore">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEND" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="DATABASE" size="15" textAlignment="CENTER" />
+               </graphic>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#showContactUsForm" text="Contact">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="SEND" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#howToUse" text="How To Use ? ">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="QUESTION" />
+                     </graphic>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#showAbout" text="About">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="INFO" />
+                     </graphic>
+                  </MenuItem>
+               </items>
+               <graphic>
+                  <FontAwesomeIconView fill="#fffefe" glyphName="QUESTION" size="20" textAlignment="CENTER" />
+               </graphic>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <JFXTabPane fx:id="tabContainer" layoutY="44.0" prefHeight="433.0" prefWidth="759.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+         <tabs>
+            <Tab fx:id="dashboardTab" onSelectionChanged="#dashBoardOpening" text="Dashboard">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <AnchorPane id="dashboard-form-vboX-container" minWidth="150.0" prefHeight="366.0" prefWidth="297.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <VBox id="dashboard-form-panel-vbox" prefHeight="333.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                 <children>
+                                    <AnchorPane>
+                                       <children>
+                                          <JFXComboBox fx:id="dashboardSelectBatch" onAction="#loadStudentsOnDashboard" prefHeight="25.0" prefWidth="299.0" promptText="Select Batch" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0" />
+                                          <JFXComboBox fx:id="dashBoardSelectStudent" layoutY="46.0" onAction="#showDetailsOnDashboard" prefHeight="25.0" prefWidth="299.0" promptText="Select Student" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="70.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Separator prefWidth="200.0" />
+                                    <JFXTextField fx:id="studentIdTextBoxOnDashboard" labelFloat="true" onKeyPressed="#showDetailsOnDashboardUsingId" promptText="Using Student Id">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="20.0" right="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <Separator prefWidth="200.0">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <TableView id="dashboard-table" fx:id="dashboardTable" editable="true" prefHeight="274.0" prefWidth="301.0" visible="false">
+                                       <columns>
+                                          <TableColumn fx:id="dashboardTablePropertyColumn" prefWidth="75.0" />
+                                          <TableColumn fx:id="dashboardTableValueColumn" prefWidth="75.0" />
+                                       </columns>
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </TableView>
+                                    <HBox fx:id="dashboardButtonBox2" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" visible="false">
+                                       <children>
+                                          <JFXButton id="edit-button" fx:id="dashboardEditButton" minWidth="80.0" onAction="#dashBoardEditButtonAction" styleClass="dashboard-form-button" text="Edit" textAlignment="CENTER">
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                          <JFXButton id="submit-button" fx:id="dashboardSubmitFeeButton" minWidth="80.0" onAction="#dashBoardSubmitFeeButtonAction" styleClass="dashboard-form-button" text="Submit Fee" textAlignment="CENTER">
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <HBox fx:id="dashboardButtonBox" alignment="CENTER" prefHeight="80.0" prefWidth="279.0" visible="false">
+                                       <children>
+                                          <JFXButton id="cancel-button" fx:id="dashboardCancelButton" minWidth="80.0" onAction="#dashBoardCancelButtonAction" styleClass="dashboard-form-button" text="Cancel" textAlignment="CENTER">
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                          <JFXButton id="delete-button" fx:id="dashboardDeleteButton" minWidth="80.0" onAction="#dashBoardDeleteButtonAction" styleClass="dashboard-form-button" text="Delete" textAlignment="CENTER">
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="2.0" />
+                                             </HBox.margin>
+                                             <padding>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                             </padding>
+                                          </JFXButton>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane id="pie-chart-anchor-pane" layoutX="313.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="366.0" prefWidth="415.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="315.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <VBox id="dashboard-chart-box" alignment="CENTER" prefHeight="413.0" prefWidth="371.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <PieChart fx:id="pichart" labelLineLength="30.0" onMouseExited="#removeTooltip" prefHeight="413.0" prefWidth="371.0" title="Students in Batches" />
+                                    <Label id="chart-detail-label" fx:id="chartDetail" alignment="CENTER" textAlignment="CENTER" textFill="#fcfcfc">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LAPTOP" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="enquiryStudentTab" text="Enquiry Students">
+               <content>
+                  <AnchorPane fx:id="addStudentAnchorPaneenquiry" minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="757.0">
+                     <children>
+                        <ScrollPane fx:id="addStudentFormScrollPaneEnquiry" fitToHeight="true" fitToWidth="true" layoutX="14.0" layoutY="28.0" prefHeight="352.0" prefWidth="266.0" styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <content>
+                              <VBox fx:id="studentFormBox1" prefHeight="377.0" prefWidth="241.0" styleClass="add-student-vbox">
+                                 <children>
+                                    <HBox alignment="CENTER">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="159.0" prefWidth="133.0">
+                                             <children>
+                                                <JFXTextField fx:id="studentName1" labelFloat="true" promptText="Student Name *" unFocusColor="#d0c4c4">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                                   </VBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="studentFatherName1" labelFloat="true" promptText="Father's Name" unFocusColor="#d0c4c4">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                                   </VBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </JFXTextField>
+                                                <JFXTextField fx:id="studentAddress1" labelFloat="true" promptText="Address" unFocusColor="#d0c4c4">
+                                                   <font>
+                                                      <Font size="14.0" />
+                                                   </font>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                                   </VBox.margin>
+                                                   <padding>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </padding>
+                                                </JFXTextField>
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="159.0" prefWidth="114.0">
+                                             <children>
+                                                <ImageView fx:id="enquirypic" fitHeight="97.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/avtar.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <FontAwesomeIconView fill="WHITE" glyphName="EDIT" onMouseClicked="#uploadEnquiryImage" size="20">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </FontAwesomeIconView>
+                                                <FontAwesomeIconView fill="RED" glyphName="REMOVE" onMouseClicked="#removeEnquiryDp" size="20" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                    <JFXTextField fx:id="studentMobil1" labelFloat="true" onKeyReleased="#mobileNumberValidation" promptText="Mobile Number (10 Digit)" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="studentAdharNumber1" labelFloat="true" onKeyReleased="#adharNumberValidation" promptText="12 Digit Aadhaar Number" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXDatePicker fx:id="studentDOB1" prefHeight="28.0" prefWidth="270.0" promptText="Date of Birth">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXDatePicker>
+                                    <JFXComboBox fx:id="selectGender1" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Gender">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXTextField fx:id="studentSchool1" labelFloat="true" promptText="School / College" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="selectBatch1" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Select Batch *">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="studentJoiningMonth1" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Joining month*">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="saveStudentEnquiry" buttonType="RAISED" onAction="#saveEnquiryStudent" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Save">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" onAction="#resetStudentForm" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Reset">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                           <padding>
+                              <Insets bottom="30.0" right="20.0" top="10.0" />
+                           </padding>
+                        </ScrollPane>
+                        <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTextField fx:id="studentSearchBoxEnquiry" onKeyReleased="#searchStudents" prefHeight="30.0" prefWidth="247.0" promptText="Search Student Here" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                              <FontAwesomeIconView fx:id="clearStudentSearchButtonEnquiry" fill="#f8f8f8" glyphName="CLOSE" layoutX="389.0" layoutY="25.0" onMouseClicked="#clearSearch" size="17" visible="false" wrappingWidth="26.0" AnchorPane.rightAnchor="37.0" AnchorPane.topAnchor="16.0" />
+                              <TableView fx:id="studentTableEnquiry" layoutY="46.0" onContextMenuRequested="#studentTableContextMenu" onMouseClicked="#studentTableMouseClick" onMouseDragged="#studentTableMouseDrag" pickOnBounds="false" prefHeight="350.0" prefWidth="452.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+                                 <columns>
+                                    <TableColumn fx:id="studentIdColumnEnquiry" prefWidth="75.0" text="ID" />
+                                    <TableColumn fx:id="studentNameColumnEnquiry" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="studentFatherNameColumnEnquiry" prefWidth="75.0" text="Father Name" />
+                                    <TableColumn fx:id="studentAddressColumnEnquiry" prefWidth="75.0" text="Address" />
+                                    <TableColumn fx:id="studentBatchColumnEnquiry" prefWidth="75.0" text="Batch" />
+                                    <TableColumn fx:id="studentMobilColumnEnquiry" prefWidth="75.0" text="Mobil" />
+                                    <TableColumn fx:id="studentAdmissionDateColumn" prefWidth="75.0" text="Enquiry Date" />
+                                 </columns>
+                                 <contextMenu>
+                                    <ContextMenu fx:id="studentTableContextMenuEnquiry">
+                                       <items>
+                                          <MenuItem fx:id="studentTableEditEnquiry" mnemonicParsing="false" onAction="#editStudentInfo" text="Edit" />
+                                          <MenuItem fx:id="studentTableDeleteEnquiry" mnemonicParsing="false" onAction="#deleteStudents" text="Delete" />
+                                          <MenuItem fx:id="markAsAdmitted" mnemonicParsing="false" onAction="#markAsAdmitted" text="Mark As Admitted" />
+                                       </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                              </TableView>
+                              <JFXButton fx:id="loadPreviousStudentsEnquiry" layoutX="25.0" layoutY="364.0" onAction="#loadPreviousPageStudentEnquiry" styleClass="page-buttons" text="Previous Page" textFill="#837b7b" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="120.0" />
+                              <JFXButton fx:id="loadNextStudentsEnquiry" layoutX="363.0" layoutY="366.0" onAction="#loadNextPageStudentEnquiry" styleClass="page-buttons" text="Next Page" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="37.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="INFO" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="addStudentTab" text="Students">
+               <content>
+                  <AnchorPane fx:id="addStudentAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="393.0" prefWidth="757.0">
+                     <children>
+                        <ScrollPane fx:id="addStudentFormScrollPane" fitToHeight="true" fitToWidth="true" layoutX="14.0" layoutY="28.0" prefHeight="352.0" prefWidth="266.0" styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <content>
+                              <VBox fx:id="studentFormBox" prefHeight="377.0" prefWidth="241.0" styleClass="add-student-vbox">
+                                 <children>
+                                    <JFXTextField fx:id="studentName" labelFloat="true" promptText="Student Name *" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="studentFatherName" labelFloat="true" promptText="Father's Name" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="studentAddress" labelFloat="true" promptText="Address" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="studentMobil" labelFloat="true" onKeyReleased="#mobileNumberValidation" promptText="Mobile Number (10 Digit)" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="studentAdharNumber" labelFloat="true" onKeyReleased="#adharNumberValidation" promptText="12 Digit Aadhaar Number" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXDatePicker fx:id="studentDOB" prefHeight="28.0" prefWidth="270.0" promptText="Date of Birth">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXDatePicker>
+                                    <JFXComboBox fx:id="selectGender" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Gender">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXTextField fx:id="studentSchool" labelFloat="true" promptText="School / College" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="selectBatch" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Select Batch *">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="13.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="studentJoiningMonth" focusColor="#d9dce8" prefHeight="25.0" prefWidth="224.0" promptText="Joining month*">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                       <children>
+                                          <JFXButton fx:id="saveStudent" buttonType="RAISED" onAction="#saveStudent" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Save">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <JFXButton buttonType="RAISED" onAction="#resetStudentForm" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Reset">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" top="20.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                           <padding>
+                              <Insets bottom="30.0" right="20.0" top="10.0" />
+                           </padding>
+                        </ScrollPane>
+                        <AnchorPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="296.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <JFXTextField fx:id="studentSearchBox" layoutX="71.0" onKeyReleased="#searchStudents" prefHeight="30.0" prefWidth="181.0" promptText="Search Student Here" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="5.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                              <FontAwesomeIconView fx:id="clearStudentSearchButton" fill="#f8f8f8" glyphName="CLOSE" layoutX="228.0" layoutY="30.571428298950195" onMouseClicked="#clearSearch" size="17" visible="false" wrappingWidth="26.0" AnchorPane.leftAnchor="270.0" AnchorPane.topAnchor="16.0" />
+                              <TableView fx:id="studentTable" layoutY="46.0" onContextMenuRequested="#studentTableContextMenu" onMouseClicked="#studentTableMouseClick" onMouseDragged="#studentTableMouseDrag" pickOnBounds="false" prefHeight="350.0" prefWidth="452.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="46.0">
+                                 <columns>
+                                    <TableColumn fx:id="studentIdColumn" prefWidth="75.0" text="ID" />
+                                    <TableColumn fx:id="studentNameColumn" onEditCommit="#studentTableEdit" prefWidth="75.0" text="Name" />
+                                    <TableColumn fx:id="studentFatherNameColumn" onEditCommit="#studentTableEdit" prefWidth="75.0" text="Father Name" />
+                                    <TableColumn fx:id="studentAddressColumn" onEditCommit="#studentTableEdit" prefWidth="75.0" text="Address" />
+                                    <TableColumn fx:id="studentMobilColumn" onEditCommit="#studentTableEdit" prefWidth="75.0" text="Mobil" />
+                                    <TableColumn fx:id="studentBatchColumn" prefWidth="75.0" text="Batch" />
+                                    <TableColumn fx:id="batchPaymentMode" prefWidth="75.0" text="Payment Mode" />
+                                    <TableColumn fx:id="totalFeesColumn" prefWidth="75.0" text="Batch Fees " />
+                                    <TableColumn fx:id="paidColumn" prefWidth="75.0" text="Paid" />
+                                    <TableColumn fx:id="pendingColumn" prefWidth="75.0" text="Pending" />
+                                 </columns>
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <contextMenu>
+                                    <ContextMenu fx:id="studentTableContextMenu">
+                                      <items>
+                                        <MenuItem fx:id="studentTableEdit" mnemonicParsing="false" onAction="#editStudentInfo" text="Edit">
+                                             <accelerator>
+                                                <KeyCodeCombination alt="UP" code="E" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                             </accelerator></MenuItem>
+                                          <MenuItem fx:id="studentTableDelete" mnemonicParsing="false" onAction="#deleteStudents" text="Delete" />
+                                          <MenuItem mnemonicParsing="false" onAction="#payFeeRedirect" text="Pay Fee">
+                                             <accelerator>
+                                                <KeyCodeCombination alt="UP" code="F" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                             </accelerator></MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#payFeeRedirect" text="Show Profile">
+                                             <accelerator>
+                                                <KeyCodeCombination alt="UP" code="P" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                             </accelerator>
+                                          </MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#showReceipts" text="Show Receipts">
+                                             <accelerator>
+                                                <KeyCodeCombination alt="UP" code="R" control="DOWN" meta="UP" shift="UP" shortcut="UP" />
+                                             </accelerator>
+                                          </MenuItem>
+                                          <MenuItem mnemonicParsing="false" onAction="#markAsEnquiry" text="Mark as enquiry" />
+                                      </items>
+                                    </ContextMenu>
+                                 </contextMenu>
+                              </TableView>
+                              <JFXButton fx:id="loadPreviousStudents" layoutX="25.0" layoutY="364.0" onAction="#loadPreviousPageStudent" styleClass="page-buttons" text="Previous Page" textFill="#837b7b" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="120.0" />
+                              <JFXButton fx:id="loadNextStudents" layoutX="363.0" layoutY="366.0" onAction="#loadNextPageStudent" styleClass="page-buttons" text="Next Page" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="37.0" />
+                              <JFXComboBox fx:id="selectBatchToFilter" layoutX="286.0" layoutY="12.0" onAction="#filterByBatch" prefHeight="29.0" prefWidth="171.0" promptText="Select Batch To Filter" AnchorPane.leftAnchor="350.0" AnchorPane.topAnchor="8.0" />
+                              <JFXButton id="refresh-button" layoutX="14.0" layoutY="12.0" onAction="#refreshStudentTable" text="Refresh" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="9.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="addBatchTab" text="Batches">
+               <content>
+                  <AnchorPane fx:id="addBatchAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ScrollPane prefHeight="352.0" prefWidth="266.0" styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                           <content>
+                              <VBox prefHeight="339.0" prefWidth="246.0" styleClass="add-student-vbox">
+                                 <children>
+                                    <JFXTextField fx:id="batchName" labelFloat="true" promptText="Batch Name" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="50.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </JFXTextField>
+                                    <JFXTextField fx:id="batchFee" labelFloat="true" onKeyPressed="#saveBatchOnEnterPress" promptText="Batch Fee" unFocusColor="#d0c4c4">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXTextField>
+                                    <JFXComboBox fx:id="selectFeesMode" onKeyPressed="#saveBatchOnEnterPress" prefHeight="29.0" prefWidth="214.0" promptText="Select Fees Mode">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="15.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXComboBox fx:id="batchFormselectMonth" onKeyPressed="#saveBatchOnEnterPress" prefHeight="29.0" prefWidth="214.0" promptText="Batch Starting on">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="15.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <HBox>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <JFXButton fx:id="saveBatch" buttonType="RAISED" onAction="#saveBatch" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Save">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </JFXButton>
+                                          <JFXButton fx:id="batchFormCancelButton" buttonType="RAISED" onAction="#batchFormButtonsAction" prefHeight="25.0" prefWidth="84.0" styleClass="save-button" text="Cancel">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <TableView fx:id="batchTable" layoutX="278.0" layoutY="73.0" prefHeight="352.0" prefWidth="469.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="278.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <columns>
+                              <TableColumn fx:id="batchIdColumn" prefWidth="100.0" styleClass="batch-id-column" text="Batch Id " />
+                              <TableColumn fx:id="batchNameColumn" prefWidth="93.0" text="Batch Name" />
+                              <TableColumn fx:id="batchFeeColumn" prefWidth="293.0" text="Batch Fee" />
+                              <TableColumn fx:id="batchFeesModeColumn" prefWidth="293.0" text="Payment Mode" />
+                           </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                           <contextMenu>
+                              <ContextMenu fx:id="batchTableContextMenu" minWidth="-Infinity">
+                                <items>
+                                  <MenuItem mnemonicParsing="false" onAction="#editBatch" text="Edit" />
+                                    <SeparatorMenuItem mnemonicParsing="false" />
+                                    <MenuItem mnemonicParsing="false" onAction="#deleteBatch" text="Delete" />
+                                </items>
+                              </ContextMenu>
+                           </contextMenu>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="BOOK" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="feesPanelTab" onSelectionChanged="#feePanelOpning" text="Fees Panel">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="398.0" prefWidth="757.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane minWidth="240.0" prefHeight="420.0" prefWidth="400.0">
+                                 <children>
+                                    <VBox id="fees-panel-form" alignment="TOP_CENTER" layoutX="65.0" layoutY="62.0" prefHeight="328.0" prefWidth="220.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="20.0">
+                                       <children>
+                                          <JFXComboBox fx:id="feesPanelSelectBatch" labelFloat="true" onAction="#loadProfile" prefWidth="200.0" promptText="Select Batch">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </JFXComboBox>
+                                          <JFXComboBox fx:id="feesPanelSelectStudent" labelFloat="true" onAction="#loadProfile" prefWidth="200.0" promptText="Select Student">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </JFXComboBox>
+                                          <Separator prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </Separator>
+                                          <Label alignment="CENTER" prefWidth="200.0" text="Using Student Id">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <JFXTextField fx:id="feesPanelStudentIdTextField" labelFloat="true" onKeyPressed="#loadProfileById" prefWidth="200.0" promptText="Enter Student Id">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                             <cursor>
+                                                <Cursor fx:constant="DEFAULT" />
+                                             </cursor>
+                                          </JFXTextField>
+                                          <VBox fx:id="feePayPanelForMonthlyBatch" alignment="TOP_CENTER" visible="false">
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                             <children>
+                                                <Separator prefWidth="200.0" />
+                                                <JFXComboBox fx:id="selectMonthToSubmitFee" labelFloat="true" prefHeight="29.0" prefWidth="295.0" promptText="Select Month">
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="15.0" right="15.0" top="20.0" />
+                                                   </VBox.margin>
+                                                </JFXComboBox>
+                                                <JFXDatePicker fx:id="dateofSubmissionofMonthly" minWidth="180.0" promptText="Select Date of Submission">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </JFXDatePicker>
+                                                <JFXButton id="submit-button" fx:id="submitFeeButtonOnFeesPanel" onAction="#submitFeeForMonthyBatch" text="Submit Fees" textFill="#fffefe">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </JFXButton>
+                                             </children>
+                                          </VBox>
+                                          <VBox fx:id="feePayPanelForInstalment" alignment="TOP_CENTER" prefHeight="135.0" prefWidth="218.0" visible="false">
+                                             <children>
+                                                <Separator prefWidth="200.0" />
+                                                <JFXTextField fx:id="amountForInstalment" labelFloat="true" onKeyReleased="#validateAmount" promptText="Enter Amount">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                                                   </VBox.margin>
+                                                   <font>
+                                                      <Font size="15.0" />
+                                                   </font>
+                                                </JFXTextField>
+                                                <JFXDatePicker fx:id="dateOfSubmissionOfInstallment" minWidth="180.0" promptText="Select Date of Submission">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </JFXDatePicker>
+                                                <JFXButton id="submit-button" fx:id="submitFeeForMonthyBatch" onAction="#payFeeInstalment" text="Submit Fees" textFill="#fffefe" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="20.0" />
+                                             </VBox.margin>
+                                          </VBox>
+                                       </children>
+                                       <padding>
+                                          <Insets top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="5.0" right="5.0" />
+                                 </padding>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="398.0" prefWidth="706.0" styleClass="root">
+                                 <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" layoutY="10.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                       <content>
+                                          <VBox id="profile-pane" alignment="TOP_CENTER" prefHeight="642.0" prefWidth="394.0">
+                                             <children>
+                                                <ImageView fx:id="profilepic" fitHeight="87.0" fitWidth="96.0" onMouseClicked="#showProfilePic" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/avtar.png" />
+                                                   </image>
+                                                   <VBox.margin>
+                                                      <Insets top="20.0" />
+                                                   </VBox.margin>
+                                                </ImageView>
+                                                <FontAwesomeIconView glyphName="EDIT" onMouseClicked="#editProfilePic" size="18">
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </FontAwesomeIconView>
+                                                <Label id="profile-name" fx:id="profileNameLabel" alignment="CENTER" contentDisplay="CENTER" text="Student Name" textAlignment="CENTER">
+                                                   <VBox.margin>
+                                                      <Insets top="10.0" />
+                                                   </VBox.margin>
+                                                </Label>
+                                                <Separator prefHeight="20.0" prefWidth="399.0">
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </Separator>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Name" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pName" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Student Id" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pId" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Father's Name" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pFname" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Address" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pAddress" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Mobile" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pMobil" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Gender" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pGender" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Adhar number" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pAdhar" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="DOB" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pDOB" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="School / College" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pSchool" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Batch" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pBatch" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label alignment="BOTTOM_CENTER" maxWidth="200.0" prefWidth="100.0" text="Joining Month" textAlignment="CENTER">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="11.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="pJoiningMonth" editable="false" focusColor="WHITE" maxWidth="300.0" prefWidth="200.0" unFocusColor="WHITE">
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <font>
+                                                            <Font size="14.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets bottom="50.0" />
+                                             </padding>
+                                          </VBox>
+                                       </content>
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </padding>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="fee-description-panel" prefHeight="398.0" prefWidth="658.0">
+                                 <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <VBox fx:id="feeDetailForMonthlyBatch" alignment="TOP_CENTER" visible="false">
+                                             <children>
+                                                <HBox alignment="TOP_RIGHT" prefHeight="25.0" prefWidth="63.0">
+                                                   <children>
+                                                      <JFXButton id="pay-fee-show-detail-button" onAction="#showDetailsInstalment" text="Show Details" />
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox fx:id="joinedOnLabel" alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Joined On - ">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                         <graphic>
+                                                            <FontAwesomeIconView id="joinedOnIcon" fill="WHITE" glyphName="USER_PLUS" />
+                                                         </graphic>
+                                                      </Label>
+                                                      <Label fx:id="joinedOnMonth">
+                                                         <font>
+                                                            <Font size="15.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                         <padding>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </padding>
+                                                      </Label>
+                                                   </children>
+                                                   <VBox.margin>
+                                                      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                   </VBox.margin>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month1" checkedColor="#20ae29" disable="true" minWidth="120.0" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month2" checkedColor="#20ae29" disable="true" minWidth="120.0" text="Month 2" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month3" checkedColor="#20ae29" disable="true" minWidth="120.0" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month4" checkedColor="#20ae29" disable="true" minWidth="120.0" text="Month 4" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month5" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month 5" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month6" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month 6" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month7" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month7" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month8" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month8" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month9" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month9" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month10" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month10" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <JFXCheckBox fx:id="month11" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month 11" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="25.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                      <JFXCheckBox fx:id="month12" checkedColor="#20ae29" disable="true" minWidth="120.0" text="month 12" textAlignment="CENTER" textFill="#fcfcfc" unCheckedColor="WHITE">
+                                                         <font>
+                                                            <Font size="18.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                                         </HBox.margin>
+                                                      </JFXCheckBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                             <padding>
+                                                <Insets top="20.0" />
+                                             </padding>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </VBox>
+                                       </content>
+                                    </ScrollPane>
+                                    <VBox fx:id="feeDetailForInstalmentBatch" alignment="TOP_CENTER" layoutX="20.0" layoutY="20.0" prefHeight="371.0" prefWidth="228.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <padding>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+                                       </padding>
+                                       <children>
+                                          <HBox alignment="TOP_RIGHT">
+                                             <children>
+                                                <JFXButton id="pay-fee-show-detail-button" onAction="#showDetailsInstalment" text="Show Details" />
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                          <PieChart fx:id="instalmentFeesDetailChart" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="feesPanelChartBox" alignment="CENTER" prefHeight="504.0" prefWidth="232.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <BarChart fx:id="monthlyincomeChart" legendVisible="false" title="Course Wise Current Month Income ">
+                                            <xAxis>
+                                              <CategoryAxis label="Course" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis label="Income in Rupees" side="LEFT">
+                                                   <tickLabelFont>
+                                                      <Font size="14.0" />
+                                                   </tickLabelFont></NumberAxis>
+                                            </yAxis>
+                                          </BarChart>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets bottom="5.0" right="5.0" top="20.0" />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                 </padding></AnchorPane>
+                           </children>
+                        </HBox>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="DOLLAR" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+            <Tab fx:id="analyticsTab" onSelectionChanged="#feePanelOpning" text="Analytics">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane alignment="TOP_CENTER" hgap="10.0" layoutX="-32.0" prefHeight="538.0" prefWidth="748.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <VBox id="income-chart-box" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER">
+                                       <children>
+                                          <JFXDatePicker fx:id="fromDateForIncome" defaultColor="#cbdad9" minWidth="150.0" prefHeight="28.0" prefWidth="237.0" promptText=" From ">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </JFXDatePicker>
+                                          <JFXDatePicker fx:id="toDateForIncome" defaultColor="#cbdad9" minWidth="150.0" onAction="#showDataOnIncomeChart" prefHeight="28.0" prefWidth="238.0" promptText=" To">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </JFXDatePicker>
+                                          <JFXButton id="submit-button" onAction="#showDataOnIncomeChart" prefHeight="33.0" prefWidth="87.0" text="Show" />
+                                          <Separator prefWidth="200.0">
+                                             <VBox.margin>
+                                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+                                             </VBox.margin>
+                                          </Separator>
+                                       </children>
+                                    </VBox>
+                                    <BarChart fx:id="incomeChartOnAnlytics" title="Course Wise Income">
+                                      <xAxis>
+                                        <CategoryAxis label="Course" side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis label="Income in Rupees" side="LEFT" />
+                                      </yAxis>
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                                       </VBox.margin>
+                                    </BarChart>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="LINE_CHART" size="17" strokeWidth="0.0" />
+               </graphic>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <Label fx:id="greetingText" text="GoodMorning SIr" textFill="WHITE" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="2.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

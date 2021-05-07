@@ -1,0 +1,23 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+*{
+     bg : #33333D;
+    text :#F0F0F0;
+}
+.root{
+    -fx-background-color: bg;
+}
+
+.text-area , .label{
+    -fx-text-fill: text;
+}
+
+.text-area{
+    -jfx-focus-color:text; 
+}
+
+
+

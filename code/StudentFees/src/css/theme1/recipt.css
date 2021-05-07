@@ -1,0 +1,39 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+
+*{
+    bg: #383127;
+    text:#FEFFF8;
+}
+
+.mainFxmlClass {
+
+}
+
+.label{
+    -fx-font-size:14px;
+}
+.heading{
+    -fx-font-size:14px;
+
+    
+    
+}
+#institute-name{
+    -fx-font-size:14px;
+	-fx-font-weight: bold;
+}
+
+.table-view .table-column{
+    -fx-alignment:center;
+}
+
+#symbol{
+    -fx-font-size:26px;
+    -fx-font-weight:bold;
+}
+#amount{
+    -fx-font-size:18px;
+}

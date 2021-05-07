@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="196.0" prefWidth="332.0" styleClass="root" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ExportImportProgressController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="122.0" layoutY="-31.0" prefHeight="169.0" prefWidth="332.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+         <children>
+            <Label id="heading" fx:id="heading" text="Heading" />
+            <ProgressIndicator fx:id="processer" minHeight="-Infinity" minWidth="-Infinity" prefHeight="96.0" prefWidth="115.0" progress="0.11">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+               </VBox.margin>
+            </ProgressIndicator>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

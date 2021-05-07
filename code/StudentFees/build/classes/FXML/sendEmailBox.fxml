@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="318.0" prefWidth="264.0" styleClass="root" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SendEmailBoxController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="2.0" layoutY="22.0" prefHeight="273.0" prefWidth="262.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <JFXProgressBar fx:id="progess" prefHeight="10.0" prefWidth="260.0" visible="false">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </JFXProgressBar>
+            <FontAwesomeIconView id="send-icon" glyphName="SEND" size="50" />
+            <Label text="Mail Your Database">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Label>
+            <Label id="error" fx:id="error" text="Error" textFill="#e47676">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="email" editable="false" labelFloat="true" promptText="Email Address">
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton id="send-button" fx:id="send" onAction="#send" prefHeight="31.0" prefWidth="102.0" text="Send">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </JFXButton>
+         </children>
+      </VBox>
+      <FontAwesomeIconView id="close" glyphName="CLOSE" layoutX="207.14286041259766" layoutY="36.14285659790039" onMouseClicked="#closeStage" size="20" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+   </children>
+</AnchorPane>

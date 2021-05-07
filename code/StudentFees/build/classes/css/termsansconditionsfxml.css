@@ -1,0 +1,39 @@
+ 
+*{
+    bg : #33333D;
+    text :#e0dcdc;
+}
+.mainFxmlClass {
+    -fx-background-color: bg;
+}
+.scroll-pane , .viewport , .corner{
+    -fx-background-color: bg; 
+}
+
+.scroll-pane .scroll-bar:vertical{
+    -fx-background-color: text;
+}
+
+.scroll-pane{
+    -fx-border-color: derive(bg , 60%); 
+}
+
+
+.label , .check-box{
+    -fx-text-fill: text;
+}
+.button:hover{
+    -fx-text-fill: text;
+    -fx-background-color: #339900;
+    -fx-background-radius: 10px;;
+    -fx-border-color: #339900;
+    -fx-border-radius: 10px;
+    -fx-cursor: hand;
+}
+.button{
+    
+    -fx-text-fill: text;
+    -fx-border-color: text;
+    -fx-border-radius: 10px;
+}
+

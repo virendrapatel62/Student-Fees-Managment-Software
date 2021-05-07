@@ -1,0 +1,8 @@
+CREATE TABLE [batches](
+  [batch_name] TEXT NOT NULL, 
+  [batch_id] INTEGER PRIMARY KEY AUTOINCREMENT, 
+  [batch_fee] INTEGER NOT NULL, 
+  [fees_mode_id] INTEGER NOT NULL);
+
+CREATE TABLE [students](  [student_name] TEXT NOT NULL,   [student_id] INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,   [dob] DATE,   [gender] INTEGER,   [aadhar_number] TEXT,   [fathers_name] TEXT,   [batch_id] INTEGER NOT NULL REFERENCES [batches]([batch_id]),   [address] TEXT,   [college] TEXT,   [mobil] TEXT);
+
